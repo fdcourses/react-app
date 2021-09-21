@@ -4,17 +4,17 @@ class SelectedUsersList extends Component {
   render() {
     const { users } = this.props;
 
-    const selectedUsers = users.filter((user) => {
-      return user.isSelected;
-    });
-
     return (
       <ul>
-        {selectedUsers.map((user) => (
-          <li key={user.id}>
-            {user.name} {user.surName}
-          </li>
-        ))}
+        {users.map((user) => {
+          return (
+            user.isSelected && (
+              <li key={user.id}>
+                {user.name} {user.surName}
+              </li>
+            )
+          );
+        })}
       </ul>
     );
   }
