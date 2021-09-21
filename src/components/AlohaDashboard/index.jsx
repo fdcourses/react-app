@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import AlohaList from '../AlohaList';
 import userDb from './../../users';
+import SelectedUsersList from './../selected-users/selected-users' 
 
 class AlohaDashboard extends Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class AlohaDashboard extends Component {
 
     return (
       <article>
+        <SelectedUsersList users={users} />
         <h1>
           Сейчас порядок сортировки {isReverseSortOrder ? 'Обратный' : 'Прямой'}
         </h1>
