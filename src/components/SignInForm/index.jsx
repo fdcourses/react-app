@@ -13,20 +13,33 @@ class SignInForm extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
 
-    e.target.reset();
+    this.setState({
+      login: '',
+      password: '',
+    })
+  };
+
+  handleChange = (e) => {
+    const {target : {name, value}} = e;
+    
+    this.setState({
+      [name]: value,
+    });
   };
 
   render() {
     const { login, password } = this.state;
     return (
       <form onSubmit={this.handleFormSubmit}>
-        <input 
-        // onChange={} TASK написать обработчик который будет брать значение инпута  и изменять стейт 
-        value={login} 
-        name="login" 
-        type="text" 
-        placeholder="Login" />
         <input
+          onChange={this.handleChange}
+          value={login}
+          name="login"
+          type="text"
+          placeholder="Login"
+        />
+        <input
+          onChange={this.handleChange}
           value={password}
           name="password"
           type="password"
