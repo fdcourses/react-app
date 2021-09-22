@@ -1,5 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
+import SignInForm from './components/SignInForm';
 // import AlohaDashboard from './components/AlohaDashboard';
 import StopWatch from './components/StopWatch';
 
@@ -23,8 +24,9 @@ class App extends Component {
 
     return (
       <>
-        {isVisible && <StopWatch />}
         <button onClick={this.toggleVisibility}>Toggle</button>
+        {isVisible && <StopWatch />}
+        <SignInForm />
       </>
     );
   }
