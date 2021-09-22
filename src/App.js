@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <>
         {isVisible && <StopWatch />}
-        <button onClick={this.toggleVisibility}>Hide</button>
+        <button onClick={this.toggleVisibility}>Toggle</button>
       </>
     );
   }
