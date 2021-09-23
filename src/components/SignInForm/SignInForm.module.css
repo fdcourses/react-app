@@ -14,3 +14,11 @@
 .container > input {
   margin-bottom: 10px;
 }
+
+.correctInput {
+  border: 5px solid green;
+}
+
+.incorrectInput {
+  border: 5px solid red;
+}
