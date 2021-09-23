@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from  './SignInForm.module.css';
 
 class SignInForm extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class SignInForm extends Component {
   render() {
     const { login, password } = this.state;
     return (
-      <form onSubmit={this.handleFormSubmit}>
+      <form className={styles.container} onSubmit={this.handleFormSubmit}>
         <input
           onChange={this.handleChange}
           value={login}
