@@ -9,11 +9,12 @@
   border: 5px solid black;
   width: 80%;
   margin: 0 auto;
+  
+  > input {
+    margin-bottom: 10px;
+  }
 }
 
-.container > input {
-  margin-bottom: 10px;
-}
 
 .correctInput {
   border: 5px solid green;

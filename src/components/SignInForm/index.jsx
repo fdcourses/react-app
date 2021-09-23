@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './SignInForm.module.css';
+import styles from './SignInForm.module.scss';
 
 class SignInForm extends Component {
   constructor(props) {
