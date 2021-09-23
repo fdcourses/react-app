@@ -40,6 +40,10 @@ class SignInForm extends Component {
     const loginClassNames = cx({
       [styles.correctInput]: isLoginCorrect,
       [styles.incorrectInput]: !isLoginCorrect,
+      container: true,
+      testClass1: true,
+      badClass: true,
+      willNotBeThere: false,
     });
     const passwordClassNames = cx({
       [styles.correctInput]: isPasswordCorrect,
@@ -77,24 +81,16 @@ class SignInForm extends Component {
 
 export default SignInForm;
 
-
 /**
  * Функция для преобразования обьекта в строку классов
  * @param {object} stylesObj обьект, ключ которого соответствует строке класса, а значение - булевой переменной
  * @returns {string} Строка состоящая из ключей в обьекте, значения которых были истинны
  */
 function cx(stylesObj) {
-  const classTuples = Object.entries(stylesObj);
-
-  const filteredClassTuples = classTuples.filter(
-    ([className, boolValue]) => boolValue
-  );
-
-  const classNamesArray = filteredClassTuples.map(([className]) => className);
-
-  let classNameString = classNamesArray.join(' ');
-
-  return classNameString;
+  return Object.entries(stylesObj)
+    .filter(([className, boolValue]) => boolValue)
+    .map(([className]) => className)
+    .join(' ');
 }
 
 /* 
