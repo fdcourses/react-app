@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import styles from './stopwatch.module.css';
+import styles from './stopwatch.module.scss';
 
 class StopWatch extends Component {
   constructor(props) {
