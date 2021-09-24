@@ -16,10 +16,17 @@ class SignInForm extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
 
-    this.setState({
-      login: '',
-      password: '',
-    });
+    // this.setState({
+    //   login: '',
+    //   password: '',
+    // });
+
+    this.setState(function(prevState, prevProps) {
+      return {
+        login: '',
+        password: ''
+      }
+    })
   };
 
   handleChange = (e) => {
