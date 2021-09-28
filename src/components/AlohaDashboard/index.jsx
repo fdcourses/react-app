@@ -2,6 +2,7 @@ import { Component } from 'react';
 import AlohaList from '../AlohaList';
 import SelectedUsersList from '../SelectedUsersList';
 import userDb from './../../users';
+import PropTypes from 'prop-types';
 
 class AlohaDashboard extends Component {
   constructor(props) {
@@ -43,16 +44,6 @@ class AlohaDashboard extends Component {
   render() {
     const { users, isReverseSortOrder } = this.state;
 
-    /* 
-      Создать комопнент SelectedUsersList
-      он принимают юзеров
-      И отрисовывает списком всех ВЫДЕЛЕННЫХ пользователей 
-      (имя и фамилия и id По желанию)
-      <ul>
-        все ВЫДЕЛЕННЫХ пользователи 
-        <li>{Имя} {Фамилия}</li> ( X раз )
-      </ul>
-    */
     return (
       <article>
         <SelectedUsersList users={users}/> 

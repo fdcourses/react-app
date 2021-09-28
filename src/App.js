@@ -1,5 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
+import Aloha from './components/Aloha';
+import AlohaDashboard from './components/AlohaDashboard';
 import SignInForm from './components/SignInForm';
 // import AlohaDashboard from './components/AlohaDashboard';
 import StopWatch from './components/StopWatch';
@@ -15,18 +17,17 @@ class App extends Component {
 
   toggleVisibility = () => {
     this.setState({
-      isVisible : !this.state.isVisible
-    })
-  }
+      isVisible: !this.state.isVisible,
+    });
+  };
 
   render() {
     const { isVisible } = this.state;
 
     return (
       <>
-        <button onClick={this.toggleVisibility}>Toggle</button>
-        {isVisible && <StopWatch />}
-        <SignInForm />
+        {/* <AlohaDashboard /> */}
+        <Aloha />
       </>
     );
   }
