@@ -51,19 +51,18 @@ export const userObj = {
   name: PropTypes.string.isRequired,
   surName: PropTypes.string.isRequired,
   isSelected: PropTypes.bool.isRequired,
-  important : PropTypes.string.isRequired
 }
 
-Aloha.defaultProps = {
-  selectUser : () => {},
-  user: {
-    id: 500,
-    name: "КИНЬ ПРОПСЫ",
-    surName: "УМНИК",
-    isSelected: false,
-    important: "А ТО БЕЗ ПРЕМИИ ОСТАНЕШСЯ"
-  }
-}
+// Aloha.defaultProps = {
+//   selectUser : () => {},
+//   user: {
+//     id: 500,
+//     name: "КИНЬ ПРОПСЫ",
+//     surName: "УМНИК",
+//     isSelected: false,
+//     important: "А ТО БЕЗ ПРЕМИИ ОСТАНЕШСЯ"
+//   }
+// }
 
 Aloha.propTypes = {
   selectUser : PropTypes.func,
