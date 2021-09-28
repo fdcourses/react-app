@@ -1,34 +1,29 @@
 import React from 'react';
 import { Component } from 'react';
-import Aloha from './components/Aloha';
-import AlohaDashboard from './components/AlohaDashboard';
-import SignInForm from './components/SignInForm';
-// import AlohaDashboard from './components/AlohaDashboard';
-import StopWatch from './components/StopWatch';
+import FlexContainer from './components/FlexContainer';
+import Grid from './components/Grid';
+import Col from './components/Grid/Col';
+import Row from './components/Grid/Row';
+
+function List(props) {
+  const { children } = props;
+
+  return <ul style={{ border: '10px solid red' }}>{children}</ul>;
+}
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isVisible: true,
-    };
-  }
-
-  toggleVisibility = () => {
-    this.setState({
-      isVisible: !this.state.isVisible,
-    });
-  };
-
   render() {
-    const { isVisible } = this.state;
-
     return (
-      <>
-        {/* <AlohaDashboard /> */}
-        <Aloha />
-      </>
+      <FlexContainer
+        justifyContainer="space-between"
+        alignItems="flex-start"
+        column
+      >
+        <a href="#">first</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">5</a>
+      </FlexContainer>
     );
   }
 }
