@@ -1,12 +1,13 @@
 import queryString from 'query-string';
+import {usersSettings} from '../configs';
 
 export const getUsers = (options = {}) => {
   const defaultOptions = {
-    page: 1,
-    results: 10,
-    seed: 'fd2021-1',
-    format: 'json',
-    inc: ['name', 'login', 'nat'],
+    page: usersSettings.DEFAULT_PAGE,
+    results: usersSettings.RESULTS,
+    seed: usersSettings.API_KEY,
+    format: usersSettings.FORMAT,
+    inc: usersSettings.DEFAULT_USER_DATA,
   };
 
   const finalOptions = {
