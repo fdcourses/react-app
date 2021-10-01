@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-
-class UserLoader extends Component {
+class NotebookLoader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
+      notebooks: [],
       isLoading: false,
       error: null,
     };
@@ -16,11 +15,11 @@ class UserLoader extends Component {
       isLoading: true,
     });
 
-    fetch('/users.json')
+    fetch('/notebooks.json')
       .then((res) => res.json())
       .then((data) => {
         this.setState({
-          users: data,
+          notebooks: data,
           isLoading: false,
         });
       })
@@ -33,7 +32,7 @@ class UserLoader extends Component {
   }
 
   render() {
-    const { users, isLoading, error } = this.state;
+    const { notebooks, isLoading, error } = this.state;
 
     if (isLoading) {
       return <div>LOADING ...</div>;
@@ -45,12 +44,15 @@ class UserLoader extends Component {
 
     return (
       <ul>
-        {users.map((user) => (
-          <li key={user.id}>{user.name}</li>
+        {notebooks.map((book) => (
+          <li key={book.id}>
+            <h2>{book.name}</h2>
+            <p>COST: {book.price} $</p>
+            </li>
         ))}
       </ul>
     );
   }
 }
 
-export default UserLoader;
+export default NotebookLoader;

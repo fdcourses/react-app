@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "lenovo 482",
+    "price": 9000
+  },
+  {
+    "id": 2,
+    "name": "acer aspire 1",
+    "price": 300
+  },
+  {
+    "id": 3,
+    "name": "mak book pro extra plus edition",
+    "price": "2 pochki"
+  }
+]
