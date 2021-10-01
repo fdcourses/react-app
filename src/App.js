@@ -2,6 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 // import UserLoader from './components/UserLoader';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import MainPage from './pages/MainPage';
 
 class App extends Component {
   render() {
@@ -22,26 +23,35 @@ class App extends Component {
         </nav>
 
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
+          <Route exact path="/" component={MainPage} />
 
           <Route path="/about">
-            <About />
+            <AboutPage />
           </Route>
 
           <Route path="/contacts">
             <Contacts />
           </Route>
+
+          <Route path="*" component={NotFound} />
         </Switch>
       </BrowserRouter>
     );
   }
 }
 
-const Home = () => <div>Home</div>;
-const About = () => <div>About</div>;
+// const Home = (props) => {
+//   console.log(props);
+//   return <div>Home</div>;
+// };
+
+const AboutPage = (props) => {
+  console.log(props);
+  return <div>About</div>;
+};
 const Contacts = () => <div>Contacts</div>;
+
+const NotFound = () => <div>404 NO FOUND</div>;
 // switch (url) {
 //   case '/contacts': {
 //     return <Contacts />
