@@ -1,13 +1,17 @@
 import React from 'react';
 import { Component } from 'react';
+import Header from './components/Header';
 import Tree from './components/Tree';
-import { UserContext } from './contexts';
+import { UserContext, ThemeContext } from './contexts';
+import CONSTANTS from './constants';
+const { THEMES } = CONSTANTS;
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      theme: THEMES.DARK,
       user: {
         id: 1,
         fullName: 'User Userovich',
@@ -19,9 +23,12 @@ class App extends Component {
 
   render() {
     return (
-      <UserContext.Provider value={this.state.user}>
-        <Tree user={this.state.user} />
-      </UserContext.Provider>
+      <ThemeContext.Provider value={this.state.theme}>
+        <UserContext.Provider value={this.state.user}>
+          <Header />
+          <Tree />
+        </UserContext.Provider>
+      </ThemeContext.Provider>
     );
   }
 }
