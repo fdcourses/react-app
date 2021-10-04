@@ -19,6 +19,7 @@ class LoaderPage extends Component {
 
   renderUsers = (state) => {
     if (state.error) {
+      return <h1>{state.error.message}</h1>;
     }
 
     return (
@@ -34,11 +35,28 @@ class LoaderPage extends Component {
     return fetch('/users.json').then((res) => res.json());
   };
 
+  getPicture = () => {
+    return new Promise((res, rej) => {
+      res(
+        'https://www.ikea.com/kr/en/images/products/jaettelik-soft-toy-dinosaur-dinosaur-velociraptor__0814802_pe772713_s5.jpg?f=undefined'
+      );
+    });
+  };
+
+  renderPic = (state) => {
+    return <div style={{width: '400px'}}>
+      <img src={state.data} alt="pic" style={{display:'block', width: '100%'}}/>
+    </div>;
+  };
+
   render() {
     return (
       <div>
-        <DataProvider loadData={this.getNotebooks} render={this.renderBooks} />
-        <DataProvider loadData={this.getUsers} render={this.renderUsers} />
+        <DataProvider loadData={this.getNotebooks}> 
+          {this.renderBooks}
+        </DataProvider>
+        {/* <DataProvider loadData={this.getUsers} test={this.renderUsers} />
+        <DataProvider loadData={this.getPicture} test={this.renderPic} /> */}
       </div>
     );
   }

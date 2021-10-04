@@ -48,7 +48,7 @@ class NotebookLoader extends Component {
           <li key={book.id}>
             <h2>{book.name}</h2>
             <p>COST: {book.price} $</p>
-            </li>
+          </li>
         ))}
       </ul>
     );

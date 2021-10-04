@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // 1. прогрузка данных
@@ -42,17 +42,15 @@ class DataProvider extends Component {
   };
 
   render() {
-    const {render} = this.props;
+    const { children } = this.props;
 
-    const layout = render(this.state);
-
-    return layout;
+    return children(this.state);
   }
 }
 
 DataProvider.propTypes = {
   loadData: PropTypes.func.isRequired,
-  render: PropTypes.func.isRequired
-}
+  children: PropTypes.func.isRequired,
+};
 
 export default DataProvider;
