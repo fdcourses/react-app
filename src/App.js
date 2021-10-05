@@ -1,9 +1,8 @@
 import React from 'react';
 import { Component } from 'react';
-import Header from './components/Header';
-import Tree from './components/Tree';
-import { UserContext, ThemeContext } from './contexts';
 import CONSTANTS from './constants';
+import Counter from './components/Counter';
+import MouseTracker from './components/MouseTracker';
 const { THEMES } = CONSTANTS;
 
 class App extends Component {
@@ -21,17 +20,17 @@ class App extends Component {
     };
   }
 
-  setTheme = (newTheme) => {this.setState({theme:newTheme})};
+  setTheme = (newTheme) => {
+    this.setState({ theme: newTheme });
+  };
 
   render() {
-    const {theme, user} = this.state;
+    const { theme, user } = this.state;
     return (
-      <ThemeContext.Provider value={[theme, this.setTheme]}>
-        <UserContext.Provider value={user}>
-          <Header  test="test"/>
-          <Tree />
-        </UserContext.Provider>
-      </ThemeContext.Provider>
+      <>
+        <Counter />
+        <MouseTracker />
+      </>
     );
   }
 }
