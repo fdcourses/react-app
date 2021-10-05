@@ -24,19 +24,7 @@ const Header = (props) => {
   );
 };
 
-// const HeaderWithTheme = (props) => {
-//   return (
-//     <ThemeContext.Consumer>
-//       {([theme, setTheme]) => {
-//         return <Header theme={theme} setTheme={setTheme} />;
-//       }}
-//     </ThemeContext.Consumer>
-//   );
-// };
-
 const HeaderWithTheme = withTheme(Header);
-
 const HeaderWithThemeAndUser = withUser(HeaderWithTheme);
-
 
 export default HeaderWithThemeAndUser;
