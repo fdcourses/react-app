@@ -21,11 +21,14 @@ class App extends Component {
     };
   }
 
+  setTheme = (newTheme) => {this.setState({theme:newTheme})};
+
   render() {
+    const {theme, user} = this.state;
     return (
-      <ThemeContext.Provider value={this.state.theme}>
-        <UserContext.Provider value={this.state.user}>
-          <Header />
+      <ThemeContext.Provider value={[theme, this.setTheme]}>
+        <UserContext.Provider value={user}>
+          <Header  test="test"/>
           <Tree />
         </UserContext.Provider>
       </ThemeContext.Provider>

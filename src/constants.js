@@ -1,7 +1,7 @@
 const CONSTANTS = {
   THEMES : {
     DARK: 'THEME_DARK',
-    LIGHT: 'THEME_LIGHT'
+    LIGHT: 'THEME_LIGHT',
   },
   LANG: {}
 }
