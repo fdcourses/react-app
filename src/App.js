@@ -3,6 +3,7 @@ import { Component } from 'react';
 import CONSTANTS from './constants';
 import Counter from './components/Counter';
 import MouseTracker from './components/MouseTracker';
+import StopWatch from './components/HookStopWatch';
 const { THEMES } = CONSTANTS;
 
 function App(props) {
@@ -17,8 +18,7 @@ function App(props) {
 
   return (
     <>
-      <button onClick={() => setIsVisible(!isVisible)}>Switch</button>
-      {isVisible && <MouseTracker />}
+      <StopWatch />
     </>
   );
 }
