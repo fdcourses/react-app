@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Component } from 'react';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import CONSTANTS from './constants';
-import Counter from './components/Counter';
-import MouseTracker from './components/MouseTracker';
-import StopWatch from './components/HookStopWatch';
+import { ThemeContext, UserContext } from './contexts';
+import MainPage from './pages/MainPage';
 const { THEMES } = CONSTANTS;
 
 function App(props) {
@@ -14,12 +13,20 @@ function App(props) {
     userImg:
       'https://www.ikea.com/kr/en/images/products/jaettelik-soft-toy-dinosaur-dinosaur-velociraptor__0814802_pe772713_s5.jpg?f=undefined',
   });
-  const [isVisible, setIsVisible] = useState(true);
+  // const [isVisible, setIsVisible] = useState(true);
 
   return (
-    <>
-      <StopWatch />
-    </>
+    <BrowserRouter>
+      <ThemeContext.Provider value={[theme, setTheme]}>
+        <UserContext.Provider value={user}>
+
+          <Switch>
+            <Route exact path="/" component={MainPage} />
+          </Switch>
+          
+        </UserContext.Provider>
+      </ThemeContext.Provider>
+    </BrowserRouter>
   );
 }
 
