@@ -18,6 +18,6 @@ export const getUsers = (options = {}) => {
   const query = queryString.stringify(finalOptions, { arrayFormat: 'comma' });
 
   return fetch(`https://randomuser.me/api/?${query}`).then((response) =>
-    response.json()
+    response.json().then(data => data.results)
   );
 };
