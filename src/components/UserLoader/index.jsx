@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {useData} from 'hooks';
+import { useData, useClicker } from 'hooks';
 import { getUsers } from 'api';
 
 const UserLoader = () => {
-  const {data : users, error, isLoading} = useData(getUsers);
-
+  const { data: users, error, isLoading } = useData(getUsers);
+  const click = useClicker();
 
   if (isLoading) {
     return <div>LOADING ...</div>;
@@ -15,11 +15,16 @@ const UserLoader = () => {
   }
 
   return (
-    <ul>
-      {users.map((user) => (
-        <li key={user.login.uuid}><pre>{JSON.stringify(user, null,2)}</pre></li>
-      ))}
-    </ul>
+    <>
+      <h1>{click}</h1>
+      <ul>
+        {users.map((user) => (
+          <li key={user.login.uuid}>
+            <pre>{JSON.stringify(user, null, 2)}</pre>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
