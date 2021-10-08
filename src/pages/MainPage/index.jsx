@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import StopWatch from '../../components/StopWatch';
-import Header from './../../components/Header';
+import StopWatch from 'components/StopWatch';
+import Header from 'components/Header';
 
 class MainPage extends Component {
   render() {

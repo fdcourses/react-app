@@ -1,8 +1,8 @@
 import { Component } from 'react';
-import AlohaList from '../AlohaList';
-import SelectedUsersList from '../SelectedUsersList';
+import AlohaList from './AlohaList';
+import SelectedUsersList from './SelectedUsersList';
 import userDb from './../../users';
-import PropTypes from 'prop-types';
+
 
 class AlohaDashboard extends Component {
   constructor(props) {
