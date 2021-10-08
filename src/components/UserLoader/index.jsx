@@ -17,7 +17,7 @@ const UserLoader = () => {
   return (
     <ul>
       {users.map((user) => (
-        <li key={user.id}><pre>{JSON.stringify(user, null,2)}</pre></li>
+        <li key={user.login.uuid}><pre>{JSON.stringify(user, null,2)}</pre></li>
       ))}
     </ul>
   );
