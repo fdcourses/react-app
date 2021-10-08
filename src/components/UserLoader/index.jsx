@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useData, useClicker } from 'hooks';
 import { getUsers } from 'api';
 
 const UserLoader = () => {
   const { data: users, error, isLoading } = useData(getUsers);
-  const click = useClicker();
-
+  const ulElem = useRef(null);
+  const click = useClicker(ulElem);
+ 
   if (isLoading) {
     return <div>LOADING ...</div>;
   }
@@ -17,7 +18,7 @@ const UserLoader = () => {
   return (
     <>
       <h1>{click}</h1>
-      <ul>
+      <ul ref={ulElem}>
         {users.map((user) => (
           <li key={user.login.uuid}>
             <pre>{JSON.stringify(user, null, 2)}</pre>
