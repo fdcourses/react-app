@@ -1,3 +1,4 @@
+import Calendar from 'components/Calendar';
 import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import CONSTANTS from './constants';
@@ -22,7 +23,10 @@ function App(props) {
 
           <Switch>
             <Route exact path="/" component={MainPage} />
+            <Route path="/calendar" component={Calendar} />
           </Switch>
+
+          
           
         </UserContext.Provider>
       </ThemeContext.Provider>
