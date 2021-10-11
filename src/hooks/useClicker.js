@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function useClicker(elemRef) {
+function useClicker(elemRef, isLoaded) {
   const [click, setClick] = useState(0);
 
   const handleClick = () => {
@@ -12,14 +12,14 @@ function useClicker(elemRef) {
     const elem = elemRef.current;
     console.log(elem);
 
-    if(elem) {
+    if(elem && isLoaded) {
       elem.addEventListener('click', handleClick);
   
       return () => {
         elem.removeEventListener('click', handleClick);
       }
     }
-  }, [elemRef.current])
+  }, [elemRef, isLoaded])
 
   return click;
 }

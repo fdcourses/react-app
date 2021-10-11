@@ -4,9 +4,28 @@ import { getUsers } from 'api';
 
 const UserLoader = () => {
   const { data: users, error, isLoading } = useData(getUsers);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [value, setValue ] = useState(0);
+  const prevState = useRef(null);
+
+  useEffect(() => {
+    setTimeout(()=> {
+      prevState.current = value;
+      setValue(count => count + 1);
+    }, 3000)
+  }, [value]);
+
   const ulElem = useRef(null);
-  const click = useClicker(ulElem);
- 
+
+
+  useEffect(() => {
+    if (ulElem.current !== null) {
+      setTimeout(() => {setIsLoaded(true)}, 1000);
+    }
+  }, [ulElem]);
+
+  const click = useClicker(ulElem , isLoaded);
+
   if (isLoading) {
     return <div>LOADING ...</div>;
   }
