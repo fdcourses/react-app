@@ -1,0 +1,24 @@
+{
+  "users": [
+    { "id": 2, "name": "Null sfras" },
+    {
+      "id": 1,
+      "name": "Test",
+      "imgSrc" : ""
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "body": "hello",
+      "createdAt": "15 07 2021 16 59",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "body": "hello you to",
+      "createdAt": "15 07 2021 17 05",
+      "userId": 2
+    }
+  ]
+}
