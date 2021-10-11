@@ -1,14 +1,15 @@
-import Calendar from 'components/Calendar';
 import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import CONSTANTS from './constants';
 import { ThemeContext, UserContext } from './contexts';
 import MainPage from './pages/MainPage';
+import Calendar from 'components/Calendar';
+import SignUpPage from 'pages/SignUpPage';
 const { THEMES } = CONSTANTS;
 
 function App(props) {
   const [theme, setTheme] = useState(THEMES.DARK);
-  const [user, setUser] = useState({
+  const [user] = useState({
     id: 1,
     fullName: 'User Userovich',
     userImg:
@@ -20,14 +21,27 @@ function App(props) {
     <BrowserRouter>
       <ThemeContext.Provider value={[theme, setTheme]}>
         <UserContext.Provider value={user}>
-
+          <nav>
+            <ul style={{display: 'flex', justifyContent: 'space-evenly', listStyle: 'none'}}>
+              <li>
+                <Link to="/">HOME</Link>
+              </li>
+              <li>
+                <Link to="/calendar">Calendar</Link>
+              </li>
+              <li>
+                <Link to="/sign-in">SIGN IN</Link>
+              </li>
+              <li>
+                <Link to="/sign-up">SIGN UP</Link>
+              </li>
+            </ul>
+          </nav>
           <Switch>
             <Route exact path="/" component={MainPage} />
             <Route path="/calendar" component={Calendar} />
+            <Route path="/sign-up" component={SignUpPage} />
           </Switch>
-
-          
-          
         </UserContext.Provider>
       </ThemeContext.Provider>
     </BrowserRouter>
