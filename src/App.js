@@ -5,6 +5,7 @@ import { ThemeContext, UserContext } from './contexts';
 import MainPage from './pages/MainPage';
 import Calendar from 'components/Calendar';
 import SignUpPage from 'pages/SignUpPage';
+import SignInPage from 'pages/SignInForm';
 const { THEMES } = CONSTANTS;
 
 function App(props) {
@@ -40,6 +41,7 @@ function App(props) {
           <Switch>
             <Route exact path="/" component={MainPage} />
             <Route path="/calendar" component={Calendar} />
+            <Route path="/sign-in" component={SignInPage} />
             <Route path="/sign-up" component={SignUpPage} />
           </Switch>
         </UserContext.Provider>

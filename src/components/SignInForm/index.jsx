@@ -1,116 +1,67 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import styles from './SignInForm.module.scss';
 
-class SignInForm extends Component {
-  constructor(props) {
-    super(props);
+import { SIGN_IN_SCHEMA } from 'utils/validationSchemas';
 
-    this.state = {
-      login: '',
-      password: '',
-      isLoginCorrect: true,
-      isPasswordCorrect: true,
-    };
-  }
+const goodSumbit = {
+  email: 'andrey@mail.ru',
+  password: '1Q#e0000',
+  remember: 'remember',
+};
 
-  handleFormSubmit = (e) => {
-    e.preventDefault();
+const badSubmit = {
+  email: '21345test',
+  password: 'test@test.text',
+  remember: '',
+};
 
-    // this.setState({
-    //   login: '',
-    //   password: '',
-    // });
-
-    this.setState(function(prevState, prevProps) {
-      return {
-        login: '',
-        password: ''
-      }
-    })
+function SignInForm(props) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isRemembering, setIsRemembering] = useState(false);
+  const handleEmail = ({ target: { value } }) => {
+    setEmail(value);
+  };
+  const handlePassword = ({ target: { value } }) => {
+    setPassword(value);
+  };
+  const handleRemember = () => {
+    setIsRemembering(!isRemembering);
   };
 
-  handleChange = (e) => {
-    const {
-      target: { name, value },
-    } = e;
-
-    this.setState({
-      [name]: value,
-      [`is${name[0].toUpperCase()}${name.slice(1)}Correct`]:
-        !value.includes(' '),
-    });
-  };
-
-  render() {
-    const { login, password, isLoginCorrect, isPasswordCorrect } = this.state;
-
-    const loginClassNames = cx({
-      [styles.correctInput]: isLoginCorrect,
-      [styles.incorrectInput]: !isLoginCorrect,
-      container: true,
-      testClass1: true,
-      badClass: true,
-      willNotBeThere: false,
-    });
-    const passwordClassNames = cx({
-      [styles.correctInput]: isPasswordCorrect,
-      [styles.incorrectInput]: !isPasswordCorrect,
-    });
-    //   ? styles.correctInput
-    //   : styles.incorrectInput;
-    // const passwordClassNames = isPasswordCorrect
-    //   ? styles.correctInput
-    //   : styles.incorrectInput;
-
-    return (
-      <form className={styles.container} onSubmit={this.handleFormSubmit}>
-        <input
-          className={loginClassNames}
-          onChange={this.handleChange}
-          value={login}
-          name="login"
-          type="text"
-          placeholder="Login"
-        />
-        <input
-          className={passwordClassNames}
-          onChange={this.handleChange}
-          value={password}
-          name="password"
-          type="password"
-          placeholder="Password"
-        />
-        <button type="submit">Submit</button>
-      </form>
-    );
+  try {
+    console.log(SIGN_IN_SCHEMA.isValidSync(goodSumbit));
+    console.log(SIGN_IN_SCHEMA.validateSync(badSubmit));
+  } catch (error) {
+    console.log(error);
   }
+  return (
+    <form className={styles.container}>
+      <input
+        name="email"
+        value={email}
+        onChange={handleEmail}
+        placeholder="email"
+      />
+      <input
+        name="password"
+        value={password}
+        onChange={handlePassword}
+        placeholder="password"
+      />
+      <label>
+        <input
+          type="checkbox"
+          name="remember"
+          value={isRemembering ? 'remember' : ''}
+          checked={isRemembering}
+          onChange={handleRemember}
+        />
+        Запомнить меня
+      </label>
+      <button>Login</button>
+    </form>
+  );
 }
 
 export default SignInForm;
-
-/**
- * Функция для преобразования обьекта в строку классов
- * @param {object} stylesObj обьект, ключ которого соответствует строке класса, а значение - булевой переменной
- * @returns {string} Строка состоящая из ключей в обьекте, значения которых были истинны
- */
-function cx(stylesObj) {
-  return Object.entries(stylesObj)
-    .filter(([className, boolValue]) => boolValue)
-    .map(([className]) => className)
-    .join(' ');
-}
-
-/* 
-  {
-    имяКласса : условие 
-    имяКласса : условие 
-    имяКласса : условие 
-    имяКласса : условие 
-    имяКласса : условие    
-    имяКласса : условие 
-            
-  }
-
- вернуть строку с классами
-
-*/
