@@ -6,6 +6,7 @@ import MainPage from './pages/MainPage';
 import Calendar from 'components/Calendar';
 import SignUpPage from 'pages/SignUpPage';
 import SignInPage from 'pages/SignInForm';
+import ToDo from 'components/Forms/ToDo';
 const { THEMES } = CONSTANTS;
 
 function App(props) {
@@ -43,6 +44,7 @@ function App(props) {
             <Route path="/calendar" component={Calendar} />
             <Route path="/sign-in" component={SignInPage} />
             <Route path="/sign-up" component={SignUpPage} />
+            <Route path="/form" component={ToDo} />
           </Switch>
         </UserContext.Provider>
       </ThemeContext.Provider>

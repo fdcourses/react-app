@@ -9,10 +9,25 @@ const initialState = {
   password: '',
 };
 
+const tasks = [
+  {
+    id: 1,
+    body: '   ',
+    status: false
+  }
+]
+
 function SignInForm(props) {
+
   const submitHandler = (values, formikBag) => {
     console.log(values);
     console.log(formikBag);
+      
+    const newTask = {
+      id: new Date.now()
+    };
+
+    tasks.push(newTask)
 
     formikBag.resetForm();
   };
